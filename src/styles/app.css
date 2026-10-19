@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+
+/* Токены. Палитра снята с интерфейса игры: угольный фон, стальные панели,
+   акцент цвета Flame Elementium. Oswald для заголовков (узкий, как игровой UI),
+   IBM Plex Sans для текста, IBM Plex Mono для формул. */
+@theme {
+  --color-*: initial;
+  --color-bg: #15171b;
+  --color-panel: #1c1f25;
+  --color-raised: #23272f;
+  --color-line: #2f343d;
+  --color-line-strong: #434a56;
+  --color-ink: #d9dbe0;
+  --color-ink-dim: #9096a2;
+  --color-ink-head: #f2f3f5;
+  --color-ember: #e8832a;
+  --color-ember-dim: #b8661f;
+  --color-ember-bg: #2a2118;
+  --color-cold: #6fb3c9;
+  --color-cold-bg: #182226;
+  --color-mark: #4a3a14;
+  --color-danger: #d05c5c;
+
+  --font-*: initial;
+  --font-body: 'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-head: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-mono: 'IBM Plex Mono', Menlo, Consolas, monospace;
+
+  --text-*: initial;
+  --text-xs: 12px;
+  --text-xs--line-height: 1.4;
+  --text-sm: 13.5px;
+  --text-sm--line-height: 1.5;
+  --text-base: 15px;
+  --text-base--line-height: 1.55;
+  --text-lg: 17px;
+  --text-lg--line-height: 1.5;
+  --text-h3: 20px;
+  --text-h3--line-height: 1.25;
+  --text-h2: 28px;
+  --text-h2--line-height: 1.15;
+  --text-h1: 34px;
+  --text-h1--line-height: 1.12;
+
+  --shadow-*: initial;
+  --shadow-panel: 0 1px 0 #0b0c0e, 0 0 0 1px #2f343d;
+  --shadow-pop: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 0 1px #434a56;
+
+  --radius-*: initial;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  --breakpoint-*: initial;
+  --breakpoint-sm: 390px;
+  --breakpoint-md: 760px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1360px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 72px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-bg font-body text-base text-ink;
+  }
+  b,
+  strong {
+    @apply font-semibold text-ink-head;
+  }
+}
