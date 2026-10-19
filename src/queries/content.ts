@@ -8,6 +8,7 @@ import {
   type PartId,
   type PartSource,
 } from '#/lib/content'
+import {searchLegendary} from '#/queries/legendary'
 
 // Данные лежат в бандле отдельными чанками и подгружаются по требованию.
 const loaders: Record<PartId, () => Promise<{part: PartSource}>> = {
@@ -79,11 +80,15 @@ const MIN_QUERY = 2
 async function search(q: string) {
   const term = normalizeForSearch(q.trim())
   if (term.length < MIN_QUERY) return {term, hits: []}
-  const parts = await Promise.all(PART_IDS.map(loadPart))
-  const hits = parts.flatMap(part =>
+  const [parts, legendary] = await Promise.all([
+    Promise.all(PART_IDS.map(loadPart)),
+    searchLegendary(term),
+  ])
+  const articles = parts.flatMap(part =>
     part.articles
       .filter(a => a.searchText.includes(term))
       .map(a => ({
+        kind: 'article' as const,
         partId: part.id,
         partTitle: part.title,
         id: a.id,
@@ -92,7 +97,7 @@ async function search(q: string) {
         excerpt: a.excerpt,
       })),
   )
-  return {term, hits}
+  return {term, hits: [...articles, ...legendary]}
 }
 
 export type SearchResult = Awaited<ReturnType<typeof search>>

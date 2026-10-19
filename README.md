@@ -2,7 +2,7 @@
 
 Справочник по Torchlight Infinite: характеристики и формулы, механики эндгейма, фарм, крафт. Публикуется на https://tli.atonyan.dev через GitHub Pages (workflow `.github/workflows/pages.yml`).
 
-Стек: Vite, React 19 с React Compiler, TypeScript, TanStack Router и Query, jotai, Tailwind 4, Base UI, react-hook-form, dayjs, reactuse. Контент лежит в `src/data/*.ts`, к рендеру его готовят query-функции в `src/queries/content.ts`.
+Стек: Vite, React 19 с React Compiler, TypeScript, TanStack Router и Query, jotai, Tailwind 4, Base UI, react-hook-form, dayjs, reactuse. Контент лежит в `src/data/*.ts`, к рендеру его готовят query-функции в `src/queries/content.ts`. Легендарные предметы (`src/data/legendary.json`, иконки в `public/img/legendary/`) выгружаются с tlidb скриптом `scripts/fetch_legendary.py`; список предметов tlidb отдаёт не всегда, тогда страницу Legendary_Gear сохраняют из браузера и передают через `--list-html`.
 
 ```
 npm install

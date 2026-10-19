@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PartRouteImport } from './routes/$part'
+import { Route as LegendaryRouteImport } from './routes/legendary'
 import { Route as SearchRouteImport } from './routes/search'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const PartRoute = PartRouteImport.update({
   path: '/$part',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegendaryRoute = LegendaryRouteImport.update({
+  id: '/legendary',
+  path: '/legendary',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
@@ -32,30 +38,34 @@ const SearchRoute = SearchRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$part': typeof PartRoute
+  '/legendary': typeof LegendaryRoute
   '/search': typeof SearchRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$part': typeof PartRoute
+  '/legendary': typeof LegendaryRoute
   '/search': typeof SearchRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$part': typeof PartRoute
+  '/legendary': typeof LegendaryRoute
   '/search': typeof SearchRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$part' | '/search'
+  fullPaths: '/' | '/$part' | '/legendary' | '/search'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$part' | '/search'
-  id: '__root__' | '/' | '/$part' | '/search'
+  to: '/' | '/$part' | '/legendary' | '/search'
+  id: '__root__' | '/' | '/$part' | '/legendary' | '/search'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PartRoute: typeof PartRoute
+  LegendaryRoute: typeof LegendaryRoute
   SearchRoute: typeof SearchRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PartRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legendary': {
+      id: '/legendary'
+      path: '/legendary'
+      fullPath: '/legendary'
+      preLoaderRoute: typeof LegendaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/search': {
       id: '/search'
       path: '/search'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PartRoute: PartRoute,
+  LegendaryRoute: LegendaryRoute,
   SearchRoute: SearchRoute,
 }
 export const routeTree = rootRouteImport

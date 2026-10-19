@@ -4,6 +4,7 @@ import {useQuery} from '@tanstack/react-query'
 import {createFileRoute, Link, useNavigate} from '@tanstack/react-router'
 
 import {searchQueryOptions} from '#/queries/content'
+import {LEGENDARY_DEFAULT} from '#/queries/legendary'
 import {Input} from '#/ui/input'
 
 type SearchParams = {q: string}
@@ -51,14 +52,25 @@ function SearchPage() {
             <li
               key={hit.href}
               className="border-b border-line py-3 last:border-b-0">
-              <div className="mb-0.5 text-xs text-ink-dim">{hit.partTitle}</div>
-              <Link
-                to="/$part"
-                params={{part: hit.partId}}
-                hash={hit.id}
-                className="font-head text-lg text-ink-head hover:text-ember hover:no-underline">
-                {hit.title}
-              </Link>
+              <div className="mb-0.5 text-xs text-ink-dim">
+                {hit.kind === 'article' ? hit.partTitle : 'Легендарный предмет'}
+              </div>
+              {hit.kind === 'article' ? (
+                <Link
+                  to="/$part"
+                  params={{part: hit.partId}}
+                  hash={hit.id}
+                  className="font-head text-lg text-ink-head hover:text-ember hover:no-underline">
+                  {hit.title}
+                </Link>
+              ) : (
+                <Link
+                  to="/legendary"
+                  search={{...LEGENDARY_DEFAULT, q: hit.title}}
+                  className="font-head text-lg text-ink-head hover:text-ember hover:no-underline">
+                  {hit.title}
+                </Link>
+              )}
               <p className="mt-1 text-sm text-ink-dim">{hit.excerpt}…</p>
             </li>
           ))}

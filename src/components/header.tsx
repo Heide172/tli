@@ -1,6 +1,7 @@
 import {type FormEvent} from 'react'
 import {Link, useNavigate} from '@tanstack/react-router'
 
+import {LEGENDARY_DEFAULT} from '#/queries/legendary'
 import {Input} from '#/ui/input'
 
 const NAV = [
@@ -50,6 +51,13 @@ export function Header({
               {item.label}
             </Link>
           ))}
+          <Link
+            to="/legendary"
+            search={LEGENDARY_DEFAULT}
+            className="rounded-sm px-2 py-1 text-ink-dim hover:text-ink-head"
+            activeProps={{className: 'bg-raised text-ink-head'}}>
+            Легендарки
+          </Link>
         </nav>
         <div className="hidden items-center gap-3 text-xs lg:flex">
           <span className="rounded-sm border border-ember-dim px-2 py-0.5 font-head tracking-widest text-ember uppercase">

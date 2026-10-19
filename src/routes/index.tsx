@@ -2,6 +2,7 @@ import {useSuspenseQuery} from '@tanstack/react-query'
 import {createFileRoute, Link} from '@tanstack/react-router'
 
 import {overviewQueryOptions} from '#/queries/content'
+import {LEGENDARY_DEFAULT} from '#/queries/legendary'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -21,6 +22,21 @@ function Home() {
         в скобках, чтобы искать по трейду и зарубежным гайдам.
       </p>
       <div className="grid gap-4 md:grid-cols-2">
+        <Link
+          to="/legendary"
+          search={LEGENDARY_DEFAULT}
+          className="block rounded-md bg-panel p-4 shadow-panel hover:bg-raised hover:no-underline md:col-span-2">
+          <div className="mb-1 flex items-baseline gap-3">
+            <span className="font-head text-lg text-ember">5</span>
+            <span className="font-head text-h3 font-medium text-ink-head">
+              Легендарные предметы
+            </span>
+          </div>
+          <p className="text-sm text-ink-dim">
+            Все легендарки с иконками, аффиксами (обычными и Corroded), базой и
+            источником дропа. Фильтры по слоту, редкости и механике.
+          </p>
+        </Link>
         {data.parts.map(part => (
           <Link
             key={part.id}
