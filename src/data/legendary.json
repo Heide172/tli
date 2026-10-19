@@ -5304,19 +5304,29 @@
   "image": "img/legendary/112250.webp"
  },
  {
-  "id": "Solid_River",
+  "id": "112251",
   "slug": "Solid_River",
   "name": "Solid River",
   "slot": "helmet",
   "weaponType": "",
-  "base": "",
+  "base": "Long Night Sorcerer's Mask",
   "requireLevel": 58,
-  "dropLevel": 0,
-  "rarity": "",
-  "sources": [],
-  "affixes": [],
-  "corrodedAffixes": [],
-  "image": "img/legendary/Solid_River.webp"
+  "dropLevel": 58,
+  "rarity": "Matchless Legendary gear",
+  "sources": [
+   "Overrealm exclusive drop"
+  ],
+  "affixes": [
+   "+(250–350) gear Energy Shield",
+   "For every +(40–50)% Spell Burst Charge Speed, +(25–30)% additional Hit Damage for skills cast by Spell Burst, up to +120%",
+   "When Burst Charge Recovery Speed is at least (230–250)% of the base value, reaching the Max Spell Burst Charge triggers the Main Skill on the nearest enemy within 25m and attempts to activate the Main Spell Skill's Spell Burst / -30% Movement Speed"
+  ],
+  "corrodedAffixes": [
+   "+(400–450) gear Energy Shield",
+   "For every +(30–40)% Spell Burst Charge Speed, +(25–30)% additional Hit Damage for skills cast by Spell Burst, up to +180%",
+   "When Burst Charge Recovery Speed is at least (230–250)% of the base value, reaching the Max Spell Burst Charge triggers the Main Skill on the nearest enemy within 25m and attempts to activate the Main Spell Skill's Spell Burst / (-20–-10)% Movement Speed"
+  ],
+  "image": "img/legendary/112251.webp"
  },
  {
   "id": "112253",
